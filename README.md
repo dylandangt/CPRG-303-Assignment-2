@@ -6,7 +6,7 @@
 
 This repository was first cloned from the Assignment 1 repository, then modified to fit the requirements of Assignment 2. 
 
-#### Note: App reference images were taken on an iPhone 7 SE, meanwhile the reference photos are windows screenshots of the display of a Pixel 8 (Android Studio).
+#### Note: App reference images were taken on an iPhone 7 SE, meanwhile the replication photos are windows screenshots of the display of a Pixel 8 (Android Studio).
 
 ## Here are the screenshots of the reference app Papa Johns.
 
