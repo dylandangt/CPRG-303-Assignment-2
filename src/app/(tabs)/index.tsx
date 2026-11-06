@@ -1,10 +1,8 @@
 import { CarryoutHeader } from "@/components/CarryoutHeader";
 import { FeaturedCard } from "@/components/FeaturedCard";
 import { RewardsBanner } from "@/components/RewardsBanner";
-import { useCart } from "@/context/CartContext";
-import { Deal, DEALS, FEATURED_DEAL_IDS } from "@/data/deals";
+import { DEALS, FEATURED_DEAL_IDS } from "@/data/deals";
 import { colors } from "@/theme/theme";
-import { notify } from "@/utils/notify";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
@@ -17,31 +15,18 @@ import {
   View,
 } from "react-native";
 
-// Only the deals listed in FEATURED_DEAL_IDS show up in the Home carousel
 const FEATURED = DEALS.filter((deal) => FEATURED_DEAL_IDS.includes(deal.id));
 const GAP = 12;
 
 export default function HomeScreen() {
   const router = useRouter();
-  const { addItem } = useCart();
-  const { width } = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const cardWidth = Math.min(width * 0.71, 340);
-  const [page, setPage] = useState(0); // which card is showing, for the dots
+  const [page, setPage] = useState(0);
 
-  // Work out which card is centered while the user swipes
   const onScroll = (e: NativeSyntheticEvent<NativeScrollEvent>) => {
     const index = Math.round(e.nativeEvent.contentOffset.x / (cardWidth + GAP));
     setPage(Math.max(0, Math.min(FEATURED.length - 1, index)));
-  };
-
-  const addDeal = (deal: Deal) => {
-    addItem({
-      id: `deal-${deal.id}`,
-      title: deal.title,
-      price: deal.price,
-      image: deal.homeImage ?? deal.image,
-    });
-    notify("Added to cart", `${deal.title} was added to your cart.`);
   };
 
   return (
@@ -63,10 +48,10 @@ export default function HomeScreen() {
             <FeaturedCard
               deal={item}
               width={cardWidth}
+              imageHeight={height * 0.5}
               onPress={() =>
                 router.push({ pathname: "/deal/[id]", params: { id: item.id } })
               }
-              onAdd={() => addDeal(item)}
             />
           )}
         />

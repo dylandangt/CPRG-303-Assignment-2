@@ -5,15 +5,8 @@ import { CrustCard } from "@/components/CrustCard";
 import { MenuItemRow } from "@/components/MenuItemRow";
 import { PriceTag } from "@/components/PriceTag";
 import { ScreenHeader } from "@/components/ScreenHeader";
-import { useCart } from "@/context/CartContext";
 import { getDeal } from "@/data/deals";
-import {
-  CRUSTS,
-  MENU_CATEGORIES,
-  MENU_ITEMS,
-  MenuCategory,
-  MenuItem,
-} from "@/data/menu";
+import { CRUSTS, MENU_CATEGORIES, MENU_ITEMS, MenuCategory } from "@/data/menu";
 import { colors, displayText, spacing, textSizes } from "@/theme/theme";
 import { notify } from "@/utils/notify";
 import { useRouter } from "expo-router";
@@ -31,13 +24,7 @@ const xlDeal = getDeal("xl-1-topping");
 
 export default function MenuScreen() {
   const router = useRouter();
-  const { addItem } = useCart();
   const [category, setCategory] = useState<MenuCategory>("Pizza");
-
-  const addMenuItem = (item: MenuItem) => {
-    addItem({ id: item.id, title: item.name, price: item.price });
-    notify("Added to cart", `${item.name} was added to your cart.`);
-  };
 
   return (
     <View style={styles.screen}>
@@ -109,9 +96,7 @@ export default function MenuScreen() {
           data={MENU_ITEMS[category]}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.content}
-          renderItem={({ item }) => (
-            <MenuItemRow item={item} onAdd={() => addMenuItem(item)} />
-          )}
+          renderItem={({ item }) => <MenuItemRow item={item} />}
         />
       )}
     </View>

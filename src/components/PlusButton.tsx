@@ -5,13 +5,10 @@ import { Pressable, StyleSheet } from "react-native";
 type Props = {
   onPress: () => void;
   size?: number;
-  /** "lime" = lime circle with green plus, "green" = green circle with white plus. */
   tone?: "lime" | "green";
-  /** Optional coloured ring around the circle (used on the Home card). */
   ringColor?: string;
 };
 
-/** The round "+" button used on cards. */
 export function PlusButton({
   onPress,
   size = 34,

@@ -1,9 +1,7 @@
 import { DealCard } from "@/components/DealCard";
 import { ScreenHeader } from "@/components/ScreenHeader";
-import { useCart } from "@/context/CartContext";
-import { DEALS, Deal } from "@/data/deals";
+import { DEALS } from "@/data/deals";
 import { colors, textSizes } from "@/theme/theme";
-import { notify } from "@/utils/notify";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import {
@@ -17,7 +15,6 @@ import {
 
 export default function DealsScreen() {
   const router = useRouter();
-  const { addItem } = useCart();
   const [code, setCode] = useState("");
   const [message, setMessage] = useState("");
 
@@ -28,16 +25,6 @@ export default function DealsScreen() {
     } else {
       setMessage("That promo code isn't valid.");
     }
-  };
-
-  const addDeal = (deal: Deal) => {
-    addItem({
-      id: `deal-${deal.id}`,
-      title: deal.title,
-      price: deal.price,
-      image: deal.image,
-    });
-    notify("Added to cart", `${deal.title} was added to your cart.`);
   };
 
   const promoBox = (
@@ -86,7 +73,6 @@ export default function DealsScreen() {
             onPress={() =>
               router.push({ pathname: "/deal/[id]", params: { id: item.id } })
             }
-            onAdd={() => addDeal(item)}
           />
         )}
       />

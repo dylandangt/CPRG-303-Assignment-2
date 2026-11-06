@@ -2,16 +2,8 @@ import { MenuItem } from "@/data/menu";
 import { colors, displayText, spacing, textSizes } from "@/theme/theme";
 import { Ionicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View } from "react-native";
-import { PlusButton } from "./PlusButton";
 
-/** One row in the non-pizza menu lists (Papadias, Wings, Sides...). */
-export function MenuItemRow({
-  item,
-  onAdd,
-}: {
-  item: MenuItem;
-  onAdd: () => void;
-}) {
+export function MenuItemRow({ item }: { item: MenuItem }) {
   return (
     <View style={styles.row}>
       <View style={styles.icon}>
@@ -22,7 +14,6 @@ export function MenuItemRow({
         <Text style={styles.description}>{item.description}</Text>
         <Text style={styles.price}>${item.price.toFixed(2)}</Text>
       </View>
-      <PlusButton onPress={onAdd} />
     </View>
   );
 }

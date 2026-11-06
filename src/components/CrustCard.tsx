@@ -6,7 +6,6 @@ import { PlusButton } from "./PlusButton";
 
 type Props = { crust: Crust; onPress: () => void };
 
-/** Small card in the "Create your own pizza" row on the Menu screen. */
 export function CrustCard({ crust, onPress }: Props) {
   return (
     <Pressable onPress={onPress} style={styles.card}>

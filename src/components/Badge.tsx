@@ -1,7 +1,6 @@
 import { colors, fonts } from "@/theme/theme";
 import { StyleSheet, Text, View } from "react-native";
 
-/** Small red label such as LIMITED TIME / FEATURED / NEW. */
 export function Badge({ label }: { label: string }) {
   return (
     <View style={styles.badge}>

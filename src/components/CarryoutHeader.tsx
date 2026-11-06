@@ -4,7 +4,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-/** Home screen header: order type, store address and the LOG IN tab. */
 export function CarryoutHeader() {
   const insets = useSafeAreaInsets();
 

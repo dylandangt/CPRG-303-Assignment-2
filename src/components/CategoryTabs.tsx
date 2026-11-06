@@ -7,7 +7,6 @@ type Props<T extends string> = {
   onSelect: (category: T) => void;
 };
 
-/** Horizontally scrolling text tabs with an underline on the selected one. */
 export function CategoryTabs<T extends string>({
   categories,
   selected,

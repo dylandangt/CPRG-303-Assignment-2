@@ -1,4 +1,3 @@
-import { CartProvider } from "@/context/CartContext";
 import { colors, fonts, textSizes } from "@/theme/theme";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -10,7 +9,7 @@ import { StatusBar } from "expo-status-bar";
  */
 export default function RootLayout() {
   return (
-    <CartProvider>
+    <>
       <StatusBar style="dark" />
       <Stack
         screenOptions={{
@@ -29,6 +28,6 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="deal/[id]" options={{ title: "Deal Details" }} />
       </Stack>
-    </CartProvider>
+    </>
   );
 }

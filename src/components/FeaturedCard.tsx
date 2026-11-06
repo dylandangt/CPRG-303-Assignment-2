@@ -2,25 +2,23 @@ import { Deal } from "@/data/deals";
 import { colors, displayText, spacing, textSizes } from "@/theme/theme";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Badge } from "./Badge";
-import { PlusButton } from "./PlusButton";
 import { PriceTag } from "./PriceTag";
 
 type Props = {
   deal: Deal;
   width: number;
+  imageHeight: number;
   onPress: () => void;
-  onAdd: () => void;
 };
 
-const IMAGE_HEIGHT = 280;
+const IMAGE_HEIGHT = 380;
 
-/** Large photo card used by the Home carousel. */
-export function FeaturedCard({ deal, width, onPress, onAdd }: Props) {
+export function FeaturedCard({ deal, width, imageHeight, onPress }: Props) {
   return (
     <Pressable onPress={onPress} style={[styles.card, { width }]}>
       <Image
         source={deal.homeImage ?? deal.image}
-        style={styles.image}
+        style={[styles.image, { height: imageHeight }]}
         resizeMode="cover"
       />
       <View style={styles.bar}>
@@ -34,14 +32,6 @@ export function FeaturedCard({ deal, width, onPress, onAdd }: Props) {
           </Text>
           <PriceTag price={deal.price} tone="onGreen" size={27} />
         </View>
-      </View>
-      <View style={styles.plus}>
-        <PlusButton
-          onPress={onAdd}
-          size={54}
-          tone="lime"
-          ringColor={colors.green}
-        />
       </View>
     </Pressable>
   );
@@ -74,5 +64,4 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     marginRight: spacing.sm,
   },
-  plus: { position: "absolute", right: 2, top: IMAGE_HEIGHT - 27 },
 });

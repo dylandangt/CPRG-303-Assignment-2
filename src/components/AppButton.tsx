@@ -10,7 +10,6 @@ import {
 type Props = {
   label: string;
   onPress: () => void;
-  /** filled = green, outline = green border, white = white fill, link = text only */
   variant?: "filled" | "outline" | "white" | "link";
   style?: StyleProp<ViewStyle>;
 };

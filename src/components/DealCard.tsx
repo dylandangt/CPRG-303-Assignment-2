@@ -2,13 +2,11 @@ import { Deal } from "@/data/deals";
 import { colors, displayText, spacing, textSizes } from "@/theme/theme";
 import { Image, Pressable, StyleSheet, Text, View } from "react-native";
 import { Badge } from "./Badge";
-import { PlusButton } from "./PlusButton";
 import { PriceTag } from "./PriceTag";
 
-type Props = { deal: Deal; onPress: () => void; onAdd: () => void };
+type Props = { deal: Deal; onPress: () => void };
 
-/** Reusable card for the Deals list. Green or beige depending on deal.variant. */
-export function DealCard({ deal, onPress, onAdd }: Props) {
+export function DealCard({ deal, onPress }: Props) {
   const green = deal.variant === "green";
 
   return (
@@ -48,13 +46,6 @@ export function DealCard({ deal, onPress, onAdd }: Props) {
             </Text>
           </View>
         )}
-        <View style={styles.plus}>
-          <PlusButton
-            onPress={onAdd}
-            size={36}
-            tone={green ? "lime" : "green"}
-          />
-        </View>
       </View>
     </Pressable>
   );
@@ -101,5 +92,4 @@ const styles = StyleSheet.create({
     lineHeight: 22,
     textAlign: "center",
   },
-  plus: { position: "absolute", top: -6, right: -6 },
 });

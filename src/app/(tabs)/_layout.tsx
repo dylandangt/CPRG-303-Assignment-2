@@ -1,12 +1,8 @@
-import { useCart } from "@/context/CartContext";
 import { colors } from "@/theme/theme";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Tabs } from "expo-router";
 
-/** Bottom tab bar with the five main screens. */
 export default function TabLayout() {
-  const { count } = useCart();
-
   return (
     <Tabs
       screenOptions={{
@@ -96,12 +92,6 @@ export default function TabLayout() {
         name="cart"
         options={{
           title: "Cart",
-          // Red number on the tab showing how many items are in the cart
-          tabBarBadge: count > 0 ? count : undefined,
-          tabBarBadgeStyle: {
-            backgroundColor: colors.red,
-            color: colors.white,
-          },
           tabBarIcon: ({ color, focused }) => (
             <Ionicons
               name={focused ? "cart" : "cart-outline"}
